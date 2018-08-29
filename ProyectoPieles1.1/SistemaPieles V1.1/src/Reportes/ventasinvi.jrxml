@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ventasinvi" language="groovy" pageWidth="595" pageHeight="802" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="90f7ae0f-0547-4cf1-a67c-cd6e35764a31">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idcliente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     persona.`idpersona` AS persona_idpersona,
+     persona.`completo` AS persona_completo,
+     persona.`telefono` AS persona_telefono,
+     persona.`email` AS persona_email,
+     persona.`direccion` AS persona_direccion,
+     cliente.`nit` AS cliente_nit
+FROM
+     `persona` persona INNER JOIN `cliente` cliente ON persona.`idpersona` = cliente.`idpersona`
+WHERE
+     cliente.`idpersona` = $P{idcliente}]]>
+	</queryString>
+	<field name="persona_idpersona" class="java.lang.Integer"/>
+	<field name="persona_completo" class="java.lang.String"/>
+	<field name="persona_telefono" class="java.lang.String"/>
+	<field name="persona_email" class="java.lang.String"/>
+	<field name="persona_direccion" class="java.lang.String"/>
+	<field name="cliente_nit" class="java.lang.String"/>
+	<variable name="venta_totalventa_2" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{venta_totalventa}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="113">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="2" width="595" height="111" backcolor="#FF9900" uuid="4cee9198-7b3c-4413-a987-3c9f54b061e0"/>
+				<frame>
+					<reportElement mode="Opaque" x="1" y="21" width="594" height="59" forecolor="#000066" backcolor="#660000" uuid="3e4a43fe-8559-4926-a119-3c4cecf5a555"/>
+					<staticText>
+						<reportElement x="90" y="32" width="48" height="20" forecolor="#FFFFFF" uuid="0dcbb915-c448-4ac1-aa3e-7efc97e02ef9"/>
+						<textElement verticalAlignment="Middle">
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Cliente: ]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="24" y="7" width="56" height="20" forecolor="#FFFFFF" uuid="6b20553e-9031-4460-ab0c-0f7149c4292c"/>
+						<textElement verticalAlignment="Middle">
+							<font size="14" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Cliente]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="245" y="32" width="26" height="20" forecolor="#FFFFFF" uuid="06edf53d-2c8b-40e8-b8a7-b69ee7ce26d5"/>
+						<textElement verticalAlignment="Middle">
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Nit:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="27" y="32" width="20" height="20" forecolor="#FFFFFF" uuid="38586e51-55e4-48be-9e7b-e496c93d6b77"/>
+						<textElement verticalAlignment="Middle">
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[ID:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="350" y="32" width="54" height="20" forecolor="#FFFFFF" uuid="a71444ed-bfe9-46ab-82f7-c0cb8c5c0a00"/>
+						<textElement verticalAlignment="Middle">
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Telefono:]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="46" y="35" width="100" height="20" uuid="8bf054f7-b03b-411b-bbbd-812f7a2d7e8e"/>
+						<textFieldExpression><![CDATA[$F{persona_idpersona}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="145" y="33" width="100" height="20" uuid="f7a35094-0877-4742-a3ba-a4be9795f753"/>
+						<textFieldExpression><![CDATA[$F{persona_completo}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="404" y="34" width="100" height="20" uuid="f893fa7a-8752-404c-89af-b5b8786c4fc2"/>
+						<textFieldExpression><![CDATA[$F{persona_telefono}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="350" y="10" width="100" height="20" uuid="3d6a5e8a-4cc1-4d2f-9c35-1c7d226c3c1a"/>
+						<textFieldExpression><![CDATA[$F{persona_email}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="251" y="12" width="100" height="20" uuid="c0cfe9b9-e28d-4e19-987c-627b6b13ef89"/>
+						<textFieldExpression><![CDATA[$F{persona_direccion}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="272" y="33" width="100" height="20" uuid="263570a7-256a-4d1a-bcb5-549b36207ba9"/>
+						<textFieldExpression><![CDATA[$F{cliente_nit}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<staticText>
+					<reportElement x="222" y="1" width="124" height="20" forecolor="#FFFFFF" uuid="025667b3-cf87-4770-8558-8fa0eee7d19d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Ventas y abonos]]></text>
+				</staticText>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="79" width="272" height="31" forecolor="#CC6600" backcolor="#996600" uuid="e56397aa-036b-4fa0-bc07-3c503a5f8335"/>
+					<staticText>
+						<reportElement x="21" y="7" width="100" height="20" forecolor="#FFFFFF" uuid="93a5969c-aa1a-47b1-a221-6e5b09da1b22"/>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Ventas]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement mode="Opaque" x="272" y="79" width="323" height="31" backcolor="#666600" uuid="de2f5eff-6bcc-4a35-afcd-fba2f1cd5703"/>
+					<staticText>
+						<reportElement x="12" y="7" width="100" height="20" forecolor="#FFFFFF" uuid="08970434-4e47-4af8-af21-a7ee6ca12115"/>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Abonos]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+	</pageHeader>
+</jasperReport>

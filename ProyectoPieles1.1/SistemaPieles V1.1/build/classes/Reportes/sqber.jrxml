@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sqber" language="groovy" pageWidth="216" pageHeight="802" columnWidth="216" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b3e2d619-c7b3-46fa-b2b2-5702c2b98fee">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idcliente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     abono.`fechaabono` AS abono_fechaabono,
+     abono.`abono` AS abono_abono
+FROM
+     `abono` abono
+WHERE
+     abono.`idcliente` = $P{idcliente}]]>
+	</queryString>
+	<field name="abono_fechaabono" class="java.sql.Date"/>
+	<field name="abono_abono" class="java.math.BigDecimal"/>
+	<variable name="abono_abono_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{abono_abono}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="76dff035-6033-40d6-9247-93c9c188099e"/>
+				<textFieldExpression><![CDATA[$F{abono_fechaabono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="0" width="100" height="20" uuid="206940d0-de4d-4795-b91c-9bf3e76bd97a"/>
+				<textFieldExpression><![CDATA[$F{abono_abono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23">
+			<textField>
+				<reportElement x="106" y="0" width="100" height="20" uuid="1107c24c-5225-4f32-b761-6a1642ec66c1"/>
+				<textFieldExpression><![CDATA[$V{abono_abono_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>
