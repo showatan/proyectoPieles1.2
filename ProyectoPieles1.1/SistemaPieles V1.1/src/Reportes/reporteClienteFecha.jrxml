@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VentasFechas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="565" leftMargin="15" rightMargin="15" topMargin="20" bottomMargin="20" uuid="00db90c4-23da-4a2c-91b3-cd6d5174af38">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaconsulta1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaconsulta2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idcliente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     venta.`idventa` AS venta_idventa,
+     venta.`idcliente` AS venta_idcliente,
+     venta.`fechaventa` AS venta_fechaventa,
+     venta.`totalmedida` AS venta_totalmedida,
+     venta.`totalventa` AS venta_totalventa,
+     venta.`tipopago` AS venta_tipopago,
+     cliente.`idpersona` AS cliente_idpersona,
+     cliente.`nit` AS cliente_nit,
+     persona.`idpersona` AS persona_idpersona,
+     persona.`completo` AS persona_completo
+FROM
+     `cliente` cliente INNER JOIN `venta` venta ON cliente.`idpersona` = venta.`idcliente`
+     INNER JOIN `persona` persona ON cliente.`idpersona` = persona.`idpersona`
+WHERE
+     persona.`idpersona` = $P{idcliente} AND
+     venta.`fechaventa`
+     BETWEEN
+       COALESCE($P{fechaconsulta1}, (SELECT MIN(venta.`fechaventa`) FROM `venta` venta))
+     AND
+       COALESCE($P{fechaconsulta2}, (SELECT MAX(venta.`fechaventa`) FROM `venta` venta))]]>
+	</queryString>
+	<field name="venta_idventa" class="java.lang.Integer"/>
+	<field name="venta_idcliente" class="java.lang.Integer"/>
+	<field name="venta_fechaventa" class="java.sql.Date"/>
+	<field name="venta_totalmedida" class="java.math.BigDecimal"/>
+	<field name="venta_totalventa" class="java.math.BigDecimal"/>
+	<field name="venta_tipopago" class="java.lang.String"/>
+	<field name="cliente_idpersona" class="java.lang.Integer"/>
+	<field name="cliente_nit" class="java.lang.String"/>
+	<field name="persona_idpersona" class="java.lang.Integer"/>
+	<field name="persona_completo" class="java.lang.String"/>
+	<variable name="venta_totalventa_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{venta_totalventa}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-6" y="-219" width="595" height="95" backcolor="#FF9900" uuid="87d04ca0-bab1-4276-ae20-620f619f1cda"/>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="12" width="595" height="68" forecolor="#000000" backcolor="#990000" uuid="cfc0eb2b-20dc-4e66-990b-c58d9f509e2b"/>
+					<staticText>
+						<reportElement x="20" y="2" width="241" height="60" forecolor="#FFFFFF" uuid="77873a3a-c2b0-4506-abec-5fd342474f8d"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="absender" size="45" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Tecnopiel]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="316" y="2" width="259" height="28" forecolor="#FFFFFF" uuid="eff08546-1853-4d06-b769-06d2cae32f94"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font size="22" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Tel: 7767-5822.]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="316" y="38" width="259" height="22" forecolor="#FFFFFF" uuid="47432672-f942-404d-8ab5-be16080a4548"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font size="16" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Dirección: 38 avenida zona 8.]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-15" y="0" width="595" height="62" backcolor="#FF9900" uuid="a1c9f48e-2c6c-4fd5-bce0-a7322ef10748"/>
+				<frame>
+					<reportElement mode="Opaque" x="1" y="34" width="206" height="28" forecolor="#000066" backcolor="#660000" uuid="0f918648-6cc0-4972-b4cc-ffeb61bc5ab7"/>
+					<staticText>
+						<reportElement x="16" y="3" width="133" height="20" forecolor="#FFFFFF" uuid="7c7a2283-f410-4fc3-a0da-9c2835620808"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Cliente]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement mode="Opaque" x="206" y="34" width="389" height="28" forecolor="#000066" backcolor="#CC3300" uuid="ff9db2ac-f02b-428b-a12d-76dcc4c63067"/>
+					<staticText>
+						<reportElement x="10" y="4" width="100" height="20" forecolor="#FFFFFF" uuid="d5b30f03-bdc9-4784-814c-dd4ec095ceca"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Venta]]></text>
+					</staticText>
+				</frame>
+			</frame>
+			<staticText>
+				<reportElement x="190" y="2" width="160" height="30" forecolor="#CC0000" uuid="81e79161-cd5e-411f-83b1-9a252ccbbe5f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Ventas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="192" y="1" width="388" height="20" forecolor="#000000" backcolor="#E05C33" uuid="6e3bdf33-5202-42eb-b80a-6c384c3cc693"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="-14" y="0" width="204" height="20" backcolor="#95101D" uuid="744f5cc8-1336-4a3d-b07a-5ed9ce5f4145"/>
+			</rectangle>
+			<frame>
+				<reportElement mode="Opaque" x="-15" y="-163" width="595" height="101" backcolor="#FF9900" uuid="3cc396d2-d0ed-4ef5-b808-354fbeffdaaf"/>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="18" width="595" height="68" forecolor="#000000" backcolor="#990000" uuid="f5335809-e94e-44bc-86b6-ef2dae8ceb8c"/>
+					<staticText>
+						<reportElement x="20" y="2" width="241" height="60" forecolor="#FFFFFF" uuid="4d619dc8-dc13-4ecf-9e71-0b2c56e93018"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="absender" size="45" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Tecnopiel]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="316" y="2" width="259" height="28" forecolor="#FFFFFF" uuid="d205fc47-dfcd-4fdd-b6dc-a0d881622b52"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font size="22" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Tel: 7767-5822.]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="295" y="38" width="280" height="22" forecolor="#FFFFFF" uuid="b188eb5a-aff4-4578-9abf-35f0c097deaa"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font size="16" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Dirección: 1era. calle D3 - 10 zona 8.]]></text>
+					</staticText>
+				</frame>
+			</frame>
+			<staticText>
+				<reportElement x="4" y="1" width="19" height="20" forecolor="#FFFFFF" uuid="fa094068-f493-4e5c-88f1-6a2d293d0c38"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="1" width="100" height="20" forecolor="#FFFFFF" uuid="a7e4c0a6-a1e8-4952-8fdc-8eba99b33cbe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="1" width="54" height="20" forecolor="#FFFFFF" uuid="e78bc412-72b0-425b-ae3b-d03cbb96224f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="194" y="1" width="19" height="20" forecolor="#FFFFFF" uuid="cf60ea8e-69af-4e62-a552-3adb35ebc87a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="1" width="100" height="20" forecolor="#FFFFFF" uuid="d1cc15bc-1da0-48ee-9e76-80aeab392e76"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="1" width="45" height="20" forecolor="#FFFFFF" uuid="b789e64f-593d-4365-849d-66f1a74f0188"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="1" width="91" height="20" forecolor="#FFFFFF" uuid="77e91b7a-26cc-4d69-8543-39c21a01d90b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="1" width="83" height="20" forecolor="#FFFFFF" uuid="3dd56cf0-ccdc-4a8d-afc3-d852566beb24"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total venta]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="4" y="3" width="19" height="20" uuid="936579bd-2f22-43a2-851b-9e9e11356979"/>
+				<textFieldExpression><![CDATA[$F{venta_idcliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="28" y="3" width="100" height="20" uuid="46090dfb-e4bc-4b2f-b5ba-94979cf7fc6a"/>
+				<textFieldExpression><![CDATA[$F{persona_completo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="3" width="54" height="20" uuid="93a59f07-3f7d-4abe-9fa6-8d0bc6e831b0"/>
+				<textFieldExpression><![CDATA[$F{cliente_nit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="4" width="19" height="20" uuid="0f0da57e-9e7f-4499-bc71-94ede54fb14e"/>
+				<textFieldExpression><![CDATA[$F{venta_idventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="4" width="100" height="20" uuid="b2d07e85-fb33-4627-a293-25c4997a46ad"/>
+				<textFieldExpression><![CDATA[$F{venta_fechaventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="328" y="4" width="45" height="20" uuid="963c688d-77c7-481c-80df-3787126a1a16"/>
+				<textFieldExpression><![CDATA[$F{venta_totalmedida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="3" width="91" height="20" uuid="a00a1ce6-812e-471b-957a-5ac63deba8f7"/>
+				<textFieldExpression><![CDATA[$F{venta_tipopago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="4" width="83" height="20" uuid="c02d875b-460b-44a4-8707-6f172a6f240b"/>
+				<textFieldExpression><![CDATA[$F{venta_totalventa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-15" y="0" width="595" height="27" backcolor="#996600" uuid="c3ae23ac-9551-4096-8caa-30dc4bbf2c9d"/>
+				<textField>
+					<reportElement x="487" y="4" width="88" height="20" forecolor="#FFFFFF" uuid="015d41ad-5c7e-4e50-b08c-1f38e8aefb0b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{venta_totalventa_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="414" y="4" width="70" height="20" forecolor="#FFFFFF" uuid="72ebec6a-2d3e-4e57-8d6b-3231fd22fe16"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total:    Q]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="-15" y="0" width="539" height="18" forecolor="#333333" backcolor="#CCCCCC" uuid="bd8662d2-7bdc-45f9-9b57-6d8acd242d84"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página: "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="524" y="0" width="56" height="18" forecolor="#333333" backcolor="#CCCCCC" uuid="eccc905f-f5b9-4e16-a7f0-24eeae860436"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="18" splitType="Stretch"/>
+	</summary>
+</jasperReport>

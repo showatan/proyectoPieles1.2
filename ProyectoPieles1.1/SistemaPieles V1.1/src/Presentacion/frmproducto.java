@@ -431,7 +431,7 @@ public class frmproducto extends javax.swing.JInternalFrame {
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
         //validadion de ingreso de datos
-        if(txtnombre.getText().length() == 0){
+        if(txtnombre.getText().length() == 0 ){
             JOptionPane.showConfirmDialog(rootPane, "Debes Ingresar un nombre de producto");
             txtnombre.requestFocus();
             return;
