@@ -37,7 +37,7 @@ public class fproducto {
 
             totalregistros = 0;
             modelo = new DefaultTableModel(null, titulos);
-            sSQL = "select * from producto where nombre like '%" + buscar + "%' order by idproducto";
+            sSQL = "select * from producto where descripcion like '%" + buscar + "%' order by idproducto";
             try {
                 Statement st = cn.createStatement();
                 ResultSet rs = st.executeQuery(sSQL);

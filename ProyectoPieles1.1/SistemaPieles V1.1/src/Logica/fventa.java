@@ -106,8 +106,8 @@ public class fventa {
                     + "v.idempleado,(select nombre from persona where idpersona = v.idempleado) as empleadon,"
                     + "(select apellido from persona where idpersona = v.idempleado) as empleadoap, "
                     + "v.fechaventa,v.totalmedida,v.totalventa,v.tipopago "
-                    + "from venta v where v.idcliente like '%"
-                    + buscar +"%' order by idventa desc";
+                    + "from venta v where v.idcliente like '"
+                    + buscar +"' order by idventa desc";
             try{
                 Statement st = cn.createStatement();
                 ResultSet rs = st.executeQuery(sSQL);

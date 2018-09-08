@@ -42,6 +42,10 @@ public class frmcliente extends javax.swing.JInternalFrame {
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
+        tablalistado.getColumnModel().getColumn(4).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setPreferredWidth(0);
     }
     
     void inhabilitar() {
@@ -546,10 +550,10 @@ public class frmcliente extends javax.swing.JInternalFrame {
         txtidpersona.setText(tablalistado.getValueAt(fila, 0).toString());
         txtnombre.setText(tablalistado.getValueAt(fila, 1).toString());
         txtapellido.setText(tablalistado.getValueAt(fila, 2).toString());
-        txttelefono.setText(tablalistado.getValueAt(fila, 3).toString());
-        txtemail.setText(tablalistado.getValueAt(fila, 4).toString());
-        txtdireccion.setText(tablalistado.getValueAt(fila, 5).toString());
-        txtnit.setText(tablalistado.getValueAt(fila, 6).toString());
+        txttelefono.setText(tablalistado.getValueAt(fila, 4).toString());
+        txtemail.setText(tablalistado.getValueAt(fila, 5).toString());
+        txtdireccion.setText(tablalistado.getValueAt(fila, 6).toString());
+        txtnit.setText(tablalistado.getValueAt(fila, 7).toString());
     }//GEN-LAST:event_tablalistadoMouseClicked
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed

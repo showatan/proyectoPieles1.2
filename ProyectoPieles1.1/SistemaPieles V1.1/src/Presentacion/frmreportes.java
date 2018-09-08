@@ -374,7 +374,8 @@ public class frmreportes extends javax.swing.JInternalFrame {
             }
 
     }//GEN-LAST:event_btngenerarreporteActionPerformed
-
+    }
+        
     private void cboeleccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboeleccionItemStateChanged
         // TODO add your handling code here:
         String estado;
