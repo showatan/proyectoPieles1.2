@@ -34,7 +34,7 @@ public class frmreportes extends javax.swing.JInternalFrame {
         initComponents();
         inhabilitar();
         mostrar("");
-        this.setTitle("Reportes de ventas por fecha");
+        this.setTitle("Reportes por fechas");
     }
 
     public static int idcliente;
@@ -102,6 +102,7 @@ public class frmreportes extends javax.swing.JInternalFrame {
         btngenerarreporte = new javax.swing.JButton();
         dcfecha2 = new com.toedter.calendar.JDateChooser();
         cboeleccion = new javax.swing.JComboBox<>();
+        btngenerarreporte1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtidcliente = new javax.swing.JTextField();
         txtnombrecliente = new javax.swing.JTextField();
@@ -125,7 +126,7 @@ public class frmreportes extends javax.swing.JInternalFrame {
 
         btngenerarreporte.setBackground(new java.awt.Color(52, 73, 94));
         btngenerarreporte.setForeground(new java.awt.Color(255, 255, 255));
-        btngenerarreporte.setText("Generar Reporte");
+        btngenerarreporte.setText("Reporte Venta");
         btngenerarreporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btngenerarreporteActionPerformed(evt);
@@ -139,6 +140,15 @@ public class frmreportes extends javax.swing.JInternalFrame {
             }
         });
 
+        btngenerarreporte1.setBackground(new java.awt.Color(52, 73, 94));
+        btngenerarreporte1.setForeground(new java.awt.Color(255, 255, 255));
+        btngenerarreporte1.setText("Reporte Abono");
+        btngenerarreporte1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btngenerarreporte1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout reportefechaLayout = new javax.swing.GroupLayout(reportefecha);
         reportefecha.setLayout(reportefechaLayout);
         reportefechaLayout.setHorizontalGroup(
@@ -146,12 +156,13 @@ public class frmreportes extends javax.swing.JInternalFrame {
             .addGroup(reportefechaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(reportefechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportefechaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btngenerarreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(dcfecha1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dcfecha2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboeleccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cboeleccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportefechaLayout.createSequentialGroup()
+                        .addComponent(btngenerarreporte1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btngenerarreporte)))
                 .addContainerGap())
         );
         reportefechaLayout.setVerticalGroup(
@@ -164,19 +175,15 @@ public class frmreportes extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dcfecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btngenerarreporte)
+                .addGroup(reportefechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btngenerarreporte)
+                    .addComponent(btngenerarreporte1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(52, 73, 94));
         jLabel2.setText("Cliente:");
-
-        txtidcliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidclienteActionPerformed(evt);
-            }
-        });
 
         txtnombrecliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
@@ -263,7 +270,7 @@ public class frmreportes extends javax.swing.JInternalFrame {
             d = cal.get(Calendar.DAY_OF_MONTH);
             m = cal.get(Calendar.MONTH);
             a = cal.get(Calendar.YEAR) - 1900;
-            
+
             //Una Fecha - Sin Cliente
             if (chespecificop == 0) {
                 Map p = new HashMap();
@@ -372,28 +379,13 @@ public class frmreportes extends javax.swing.JInternalFrame {
                     e.printStackTrace();
                 }
             }
-
+        }
     }//GEN-LAST:event_btngenerarreporteActionPerformed
+/*
+        
 
-    private void cboeleccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboeleccionItemStateChanged
-        // TODO add your handling code here:
-        String estado;
-        int seleccionado = cboeleccion.getSelectedIndex();
-        estado = (String) cboeleccion.getItemAt(seleccionado);
-        if (estado.equals("Una fecha")) {
-            ping = 1;
-            eleccion1();
-        }
-        if (estado.equals("Dos fechas")) {
-            ping = 2;
-            eleccion2();
-        }
-    }//GEN-LAST:event_cboeleccionItemStateChanged
-
-    private void txtidclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidclienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidclienteActionPerformed
-
+        
+         */
     private void btnbuscarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarclienteActionPerformed
         // TODO add your handling code here:
         frmvistacliente.clavecliente = "reporte";
@@ -417,6 +409,154 @@ public class frmreportes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_dcfecha1PropertyChange
+
+    private void cboeleccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboeleccionItemStateChanged
+        // TODO add your handling code here:
+        String estado;
+        int seleccionado = cboeleccion.getSelectedIndex();
+        estado = (String) cboeleccion.getItemAt(seleccionado);
+        if (estado.equals("Una fecha")) {
+            ping = 1;
+            eleccion1();
+        }
+        if (estado.equals("Dos fechas")) {
+            ping = 2;
+            eleccion2();
+        }
+    }//GEN-LAST:event_cboeleccionItemStateChanged
+
+    private void btngenerarreporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerarreporte1ActionPerformed
+        // TODO add your handling code here:
+        if (chespecificop == 1 && txtnombrecliente.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debes Ingresar un cliente.");
+            btnbuscarcliente.requestFocus();
+            return;
+        }
+        //Una fecha
+        if (ping == 1) {
+            if (dcfecha1.getDate() == null) {
+                JOptionPane.showMessageDialog(rootPane, "Debes Ingresar una fecha.");
+                dcfecha1.requestFocus();
+                return;
+            }
+            Calendar cal;
+            int d, m, a;
+            cal = dcfecha1.getCalendar();
+            d = cal.get(Calendar.DAY_OF_MONTH);
+            m = cal.get(Calendar.MONTH);
+            a = cal.get(Calendar.YEAR) - 1900;
+
+            //Una Fecha - Sin Cliente
+            if (chespecificop == 0) {
+                Map p = new HashMap();
+                p.put("fechaconsulta", (new Date(a, m, d)));
+                JasperReport report;
+                JasperPrint print;
+                try {
+                    report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                            + "/src/Reportes/AbonosR.jrxml");
+                    print = JasperFillManager.fillReport(report, p, connection);
+
+                    JasperViewer view = new JasperViewer(print, false);
+                    view.setTitle("Reporte de Abonos por fechas");
+                    view.setVisible(true);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+            //Una Fecha - Con cliente
+            if (chespecificop == 1) {
+                Map p = new HashMap();
+                p.put("fechaconsulta1", (new Date(a, m, d)));
+                p.put("idcliente", txtidcliente.getText());
+                JasperReport report;
+                JasperPrint print;
+                try {
+                    report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                            + "/src/Reportes/reporteClienteFechaAbono.jrxml");
+                    print = JasperFillManager.fillReport(report, p, connection);
+
+                    JasperViewer view = new JasperViewer(print, false);
+                    view.setTitle("Reporte de ventas por fechas");
+                    view.setVisible(true);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+        //Dos Fechas
+        if (ping == 2) {
+            if (dcfecha1.getDate() == null) {
+                JOptionPane.showMessageDialog(rootPane, "Debes Ingresar una fecha de inicio.");
+                dcfecha1.requestFocus();
+                return;
+            }
+            if (dcfecha2.getDate() == null) {
+                JOptionPane.showMessageDialog(rootPane, "Debes Ingresar una fecha de finalizacion.");
+                dcfecha1.requestFocus();
+                return;
+            }
+            Calendar cal1, cal2;
+            int d1, d2, m1, m2, a1, a2;
+            cal1 = dcfecha1.getCalendar();
+            cal2 = dcfecha2.getCalendar();
+            d1 = cal1.get(Calendar.DAY_OF_MONTH);
+            m1 = cal1.get(Calendar.MONTH);
+            a1 = cal1.get(Calendar.YEAR) - 1900;
+
+            d2 = cal2.get(Calendar.DAY_OF_MONTH);
+            m2 = cal2.get(Calendar.MONTH);
+            a2 = cal2.get(Calendar.YEAR) - 1900;
+
+            //Dos Fechas - Sin Cliente
+            if (chespecificop == 0) {
+                Map p = new HashMap();
+                p.put("fechaconsulta1", (new Date(a1, m1, d1)));
+                p.put("fechaconsulta2", (new Date(a2, m2, d2)));
+                JasperReport report;
+                JasperPrint print;
+                try {
+                    report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                            + "/src/Reportes/AbonosFechas.jrxml");
+                    print = JasperFillManager.fillReport(report, p, connection);
+
+                    JasperViewer view = new JasperViewer(print, false);
+                    view.setTitle("Reporte de ventas por fechas");
+                    view.setVisible(true);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            //Dos Fechas - Con cliente
+            if (chespecificop == 1) {
+                Map p = new HashMap();
+                p.put("fechaconsulta1", (new Date(a1, m1, d1)));
+                p.put("fechaconsulta2", (new Date(a2, m2, d2)));
+                p.put("idcliente", txtidcliente.getText());
+                JasperReport report;
+                JasperPrint print;
+                try {
+                    report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                            + "/src/Reportes/reporteClientesFechasAbono.jrxml");
+                    print = JasperFillManager.fillReport(report, p, connection);
+
+                    JasperViewer view = new JasperViewer(print, false);
+                    view.setTitle("Reporte de ventas por fechas");
+                    view.setVisible(true);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }//GEN-LAST:event_btngenerarreporte1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,6 +596,7 @@ public class frmreportes extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbuscarcliente;
     private javax.swing.JButton btngenerarreporte;
+    private javax.swing.JButton btngenerarreporte1;
     private javax.swing.JComboBox<String> cboeleccion;
     private javax.swing.JCheckBox chespecifico;
     private com.toedter.calendar.JDateChooser dcfecha1;
