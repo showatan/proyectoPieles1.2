@@ -32,7 +32,7 @@ WHERE
 	<field name="abono_fechaabono" class="java.sql.Date"/>
 	<field name="abono_abono" class="java.math.BigDecimal"/>
 	<field name="abono_idcliente" class="java.lang.Integer"/>
-	<variable name="abono_abono_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+	<variable name="abono_abono_1" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{abono_abono}]]></variableExpression>
 	</variable>
 	<background>

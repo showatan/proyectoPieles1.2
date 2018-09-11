@@ -51,8 +51,8 @@ public class fdetalleventa {
             sSQL = "select d.iddetalleventa, d.idventa, d.idproducto,"
                     + "p.nombre, p.precioventa, d.medida, d.subtotal "
                     + "from detalleventa d inner join producto p "
-                    + "on d.idproducto = p.idproducto where d.idventa like '%"
-                    + buscar+"%' order  by iddetalleventa desc";
+                    + "on d.idproducto = p.idproducto where d.idventa like '"
+                    + buscar+"' order  by iddetalleventa desc";
             
             try{
                 Statement st = cn.createStatement();

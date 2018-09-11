@@ -8,6 +8,7 @@ package Presentacion;
 import Logica.fproducto;
 import static Presentacion.frmventa.txtmedida;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -93,6 +94,12 @@ public class frmvistaproducto extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(236, 240, 241));
         jLabel6.setText("Buscar:");
+
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
+            }
+        });
 
         btnbuscar.setBackground(new java.awt.Color(44, 62, 80));
         btnbuscar.setForeground(new java.awt.Color(236, 240, 241));
@@ -222,6 +229,13 @@ public class frmvistaproducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         mostrar(txtbuscar.getText());
     }//GEN-LAST:event_btnbuscarActionPerformed
+
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+         // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+             mostrar(txtbuscar.getText());
+        }
+    }//GEN-LAST:event_txtbuscarKeyReleased
 
     /**
      * @param args the command line arguments

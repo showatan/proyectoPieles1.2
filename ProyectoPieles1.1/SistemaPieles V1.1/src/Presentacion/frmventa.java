@@ -20,6 +20,7 @@ import java.awt.event.KeyEvent;
 import java.awt.Checkbox;
 import java.io.File;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import net.sf.jasperreports.engine.JasperCompileManager;

@@ -379,6 +379,21 @@ public class frmreportes extends javax.swing.JInternalFrame {
                     e.printStackTrace();
                 }
             }
+<<<<<<< HEAD
+=======
+
+    }//GEN-LAST:event_btngenerarreporteActionPerformed
+    }
+        
+    private void cboeleccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboeleccionItemStateChanged
+        // TODO add your handling code here:
+        String estado;
+        int seleccionado = cboeleccion.getSelectedIndex();
+        estado = (String) cboeleccion.getItemAt(seleccionado);
+        if (estado.equals("Una fecha")) {
+            ping = 1;
+            eleccion1();
+>>>>>>> 3fc83fed575927f57c335e796c664662cb1c5a69
         }
     }//GEN-LAST:event_btngenerarreporteActionPerformed
 /*

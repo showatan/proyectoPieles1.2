@@ -42,8 +42,8 @@ public class fabono {
             
             modelo = new DefaultTableModel(null,titulos);
             sSQL = "select a.idabono,a.idcliente,a.descripcion,a.fechaabono,a.abono "
-                    + "from abono a where a.idcliente like'%"
-                    + buscar+ "%' order by idabono desc";
+                    + "from abono a where a.idcliente like'"
+                    + buscar+ "' order by idabono desc";
             try{
                 Statement st = cn.createStatement();
                 ResultSet rs = st.executeQuery(sSQL);
