@@ -379,28 +379,9 @@ public class frmreportes extends javax.swing.JInternalFrame {
                     e.printStackTrace();
                 }
             }
-<<<<<<< HEAD
-=======
-
     }//GEN-LAST:event_btngenerarreporteActionPerformed
-    }
-        
-    private void cboeleccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboeleccionItemStateChanged
-        // TODO add your handling code here:
-        String estado;
-        int seleccionado = cboeleccion.getSelectedIndex();
-        estado = (String) cboeleccion.getItemAt(seleccionado);
-        if (estado.equals("Una fecha")) {
-            ping = 1;
-            eleccion1();
->>>>>>> 3fc83fed575927f57c335e796c664662cb1c5a69
-        }
-    }//GEN-LAST:event_btngenerarreporteActionPerformed
-/*
-        
-
-        
-         */
+    }                                
+    
     private void btnbuscarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarclienteActionPerformed
         // TODO add your handling code here:
         frmvistacliente.clavecliente = "reporte";
@@ -424,21 +405,6 @@ public class frmreportes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_dcfecha1PropertyChange
-
-    private void cboeleccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboeleccionItemStateChanged
-        // TODO add your handling code here:
-        String estado;
-        int seleccionado = cboeleccion.getSelectedIndex();
-        estado = (String) cboeleccion.getItemAt(seleccionado);
-        if (estado.equals("Una fecha")) {
-            ping = 1;
-            eleccion1();
-        }
-        if (estado.equals("Dos fechas")) {
-            ping = 2;
-            eleccion2();
-        }
-    }//GEN-LAST:event_cboeleccionItemStateChanged
 
     private void btngenerarreporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerarreporte1ActionPerformed
         // TODO add your handling code here:
@@ -572,6 +538,21 @@ public class frmreportes extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_btngenerarreporte1ActionPerformed
+
+    private void cboeleccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboeleccionItemStateChanged
+        // TODO add your handling code here:
+        String estado;
+        int seleccionado = cboeleccion.getSelectedIndex();
+        estado = (String) cboeleccion.getItemAt(seleccionado);
+        if (estado.equals("Una fecha")) {
+            ping = 1;
+            eleccion1();
+        }
+        if (estado.equals("Dos fechas")) {
+            ping = 2;
+            eleccion2();
+        }
+    }//GEN-LAST:event_cboeleccionItemStateChanged
 
     /**
      * @param args the command line arguments

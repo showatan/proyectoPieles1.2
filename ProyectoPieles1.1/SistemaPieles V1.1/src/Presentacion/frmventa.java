@@ -1130,9 +1130,10 @@ public class frmventa extends javax.swing.JInternalFrame {
 
         dts.setTotalmedida(Double.parseDouble(txttotalmedida.getText()));
         dts.setTotalventa(Double.parseDouble(txttotalventa.getText()));
+        dts.setTipopago(txtnombreproducto.getText());
 
-        int seleccionado = cbotipopago.getSelectedIndex();
-        dts.setTipopago((String) cbotipopago.getItemAt(seleccionado));
+        //int seleccionado = cbotipopago.getSelectedIndex();
+        //dts.setTipopago((String) cbotipopago.getItemAt(seleccionado));
 
         if (accion.equals("editar")) {
             dts.setIdventa(Integer.parseInt(txtidventa.getText()));

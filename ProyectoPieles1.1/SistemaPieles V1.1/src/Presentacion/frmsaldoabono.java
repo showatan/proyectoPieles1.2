@@ -197,7 +197,7 @@ public class frmsaldoabono extends javax.swing.JInternalFrame {
             tablalistado.setModel(modelo);
 
             lbltotalregistros.setText("No. Abonos realizados : " + Integer.toString(func2.totalregistros));
-            lbltotalabonos.setText("Total abonos : " + String.format("%.2f", (func2.totalabonos)));
+            lbltotalabonos.setText(String.format("%.2f", (func2.totalabonos)));
 
             Double resultado;
             resultado = func.totalventa - func2.totalabonos;
@@ -267,6 +267,7 @@ public class frmsaldoabono extends javax.swing.JInternalFrame {
         lbltotalabonos = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablalistadoventa = new javax.swing.JTable();
@@ -501,6 +502,10 @@ public class frmsaldoabono extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel2.setText("Total abonos: ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -516,9 +521,11 @@ public class frmsaldoabono extends javax.swing.JInternalFrame {
                 .addComponent(btnsalir)
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbltotalregistros)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbltotalabonos)
                 .addGap(7, 7, 7))
         );
@@ -535,8 +542,9 @@ public class frmsaldoabono extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbltotalregistros)
-                    .addComponent(lbltotalabonos))
-                .addGap(80, 80, 80))
+                    .addComponent(lbltotalabonos)
+                    .addComponent(jLabel2))
+                .addGap(89, 89, 89))
         );
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
@@ -734,28 +742,31 @@ public class frmsaldoabono extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if (txtidcliente.getText().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Seleccione un cliente por favor.");
+        // TODO add your handling code here:       
+        if (txtnombrecliente.getText().length() == 0 ) {
+            JOptionPane.showMessageDialog(rootPane, "Debes seleccionar un cliente.");
+            btnbuscarcliente.requestFocus();
+            return;
+        }if (txttotalventa.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debes filtrar un cliente.");
+            btnfiltrar.requestFocus();
             return;
         }
-        Map p = new HashMap();
-        p.put("idcliente", txtidcliente.getText());
-        JasperReport report;
-        JasperPrint print;
-
-        try {
-            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/Reportes/VentasAbonos.jrxml");
-            print = JasperFillManager.fillReport(report, p, connection);
-
-            JasperViewer view = new JasperViewer(print, false);
-            view.setTitle("Reporte de ventas y abonos");
-            view.setVisible(true);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        frmsaldoreporte form = new frmsaldoreporte();
+        form.toFront();
+        form.setVisible(true);
+        
+        
+        String iddcliente = txtidcliente.getText();
+        String nocliente = txtnombrecliente.getText();
+        String totalventa = txttotalventa.getText();
+        String totalabono = lbltotalabonos.getText();
+        String saldototal = txtsaldo.getText();
+        frmsaldoreporte.txtidcliente.setText(iddcliente);
+        frmsaldoreporte.txtnombrecliente.setText(nocliente);
+        frmsaldoreporte.totalventa.setText(totalventa);
+        frmsaldoreporte.totalabono.setText(totalabono);
+        frmsaldoreporte.saldototal.setText(saldototal);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -964,6 +975,7 @@ public class frmsaldoabono extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -990,6 +1002,6 @@ public class frmsaldoabono extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtidventa;
     public static javax.swing.JTextField txtnombrecliente;
     private javax.swing.JTextField txtsaldo;
-    private javax.swing.JTextField txttotalventa;
+    public static javax.swing.JTextField txttotalventa;
     // End of variables declaration//GEN-END:variables
 }

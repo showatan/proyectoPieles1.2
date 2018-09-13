@@ -13,22 +13,22 @@ import java.sql.Date;
  */
 public class vestado {
     private int idestado;
-    private int id;
-    private Date fecha;
-    private String concepto;
+    private int idcliente;
+    private int idventa;
     private Double venta;
+    private int idabono;
     private Double abono;
     private Double saldo;
 
     public vestado() {
     }
 
-    public vestado(int idestado, int id, Date fecha, String concepto, Double venta, Double abono, Double saldo) {
+    public vestado(int idestado, int idcliente, int idventa, Double venta, int idabono, Double abono, Double saldo) {
         this.idestado = idestado;
-        this.id = id;
-        this.fecha = fecha;
-        this.concepto = concepto;
+        this.idcliente = idcliente;
+        this.idventa = idventa;
         this.venta = venta;
+        this.idabono = idabono;
         this.abono = abono;
         this.saldo = saldo;
     }
@@ -41,28 +41,20 @@ public class vestado {
         this.idestado = idestado;
     }
 
-    public int getId() {
-        return id;
+    public int getIdcliente() {
+        return idcliente;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public int getIdventa() {
+        return idventa;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getConcepto() {
-        return concepto;
-    }
-
-    public void setConcepto(String concepto) {
-        this.concepto = concepto;
+    public void setIdventa(int idventa) {
+        this.idventa = idventa;
     }
 
     public Double getVenta() {
@@ -71,6 +63,14 @@ public class vestado {
 
     public void setVenta(Double venta) {
         this.venta = venta;
+    }
+
+    public int getIdabono() {
+        return idabono;
+    }
+
+    public void setIdabono(int idabono) {
+        this.idabono = idabono;
     }
 
     public Double getAbono() {

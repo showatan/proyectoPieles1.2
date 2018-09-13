@@ -191,9 +191,9 @@ public class fcliente {
     }
     
     public boolean eliminar(vcliente dts){
-        sSQL = "delate from cliente where idpersona=?";
+        sSQL = "delete from cliente where idpersona=?";
         
-        sSQL2 = "delete form persona where idpersona=?";
+        sSQL2 = "delete from persona where idpersona=?";
         
         try{
             PreparedStatement pst = cn.prepareStatement(sSQL);

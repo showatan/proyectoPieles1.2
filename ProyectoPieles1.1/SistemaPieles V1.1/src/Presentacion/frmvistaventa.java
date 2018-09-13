@@ -7,6 +7,7 @@ package Presentacion;
 
 import Logica.fcliente;
 import Logica.fventa;
+import Presentacion.frmsaldoabono;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
